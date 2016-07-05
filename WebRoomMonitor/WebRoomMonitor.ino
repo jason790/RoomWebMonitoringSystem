@@ -20,7 +20,7 @@ EthernetClient client;
   int motionPin = 5;
   int DHT22_PIN = A0;
   int GasPin = A1;
-
+  
   int temperature = 23;
   int humidity = 37;
   int light = 10;
@@ -58,7 +58,7 @@ void SendHTMLPageToClient(){
   client.print("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\nRetry-After: 600\r\n Connection: close \r\n\r\n");
   client.print("<html><head><meta http-equiv='refresh' content='4'/>");
   client.print("<title>SensorsWebServer</title></head>");
-  client.print("<body style=\"background-color:#004600\"><table cellpadding=\"5\" style=\"background-color:#004600;border-style:hidden;color:#11ff11\" align=center><tbody><tr>"); // refresh the page automatically every 5 sec
+  client.print("<body style=\"background-color:#ffffff\"><table cellpadding=\"5\" style=\"background-color:#ffffff;border-style:double;color:#000000\" align=center><tbody><tr>"); // refresh the page automatically every 5 sec
   client.print("<td>Gas</td>\n<td>Termperature</td>\n<td>Humidity</td>\n<td>Light</td>\n<td>Floodance</td>\n<td>Inhabitance</td>\n</tr><tr>");
   
   // output the values
@@ -98,7 +98,7 @@ void SendHTMLPageToClient(){
   light = lightMeter.readLightLevel();
   
   ws = analogRead(WaterSensorPin);
-  flooded = (ws > 100);
+  flooded = (ws > 300);
   
   motion = (digitalRead(motionPin) == HIGH);
 
